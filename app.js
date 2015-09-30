@@ -35,7 +35,7 @@ app.use(mybodyParser.urlencoded({ extended: true }));
 app.use(mybodyParser.json());
 app.use(session({key: 'express.sid' // use unique ids for session IDs
 ,secret: 'xyz123abC',
-    store: new redisStore({ host: 'localhost', port: 6379, client: client }),
+    store: new redisStore({ host: '52.23.236.175', port: 6379, client: client }),
     resave: true, saveUninitialized: true, cookie:{expires:new Date(new Date().getMinutes()+240), maxAge:900000}
      }));
 
