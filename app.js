@@ -10,6 +10,7 @@ var client = redis.createClient();//CREATE REDIS CLIENT
 
 //ROUTES
 var routes = require('./routes');
+var url = require('url');
 var users = require('./routes/users');
 var loginsuccess = require('./routes/login');
 var updatedetails = require('./routes/updatedetails');
@@ -24,6 +25,7 @@ var path = require('path');
 
 var app = express();
 var count = 0;
+var redisURL = url.parse('redis://:@52.23.236.175:6379/0');
 
 // Set app's environments
 app.set('port', process.env.PORT || 7001);
@@ -35,7 +37,7 @@ app.use(mybodyParser.urlencoded({ extended: true }));
 app.use(mybodyParser.json());
 app.use(session({key: 'express.sid' // use unique ids for session IDs
 ,secret: 'xyz123abC',
-    store: new redisStore({ host: '52.23.236.175', port: 6379, client: client }),
+    store: new redisStore({ host: redisURL.hostname, port: 6379, client: client }),
     resave: true, saveUninitialized: true, cookie:{expires:new Date(new Date().getMinutes()+240), maxAge:900000}
      }));
 
