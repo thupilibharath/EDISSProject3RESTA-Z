@@ -36,8 +36,7 @@ exports.loginsuccess = function(req, res){
                 console.log("Database is connected ... \n\n");
                 connection.query('SELECT * from user_details where uname=' + temp, function (err, rows) {
                     if (!err&&rows.length == 0)
-                        res.render('error', {error: 'Invalid Credentials. Please login again'});
-                    else if (!err && rows.length > 0) {
+                        res.send(JSON.stringify({err_message: 'That username and password combination was not available'}));        else if (!err && rows.length > 0) {
                         console.log('The solution is: ', rows);
                         uname1 = rows[0].uname;
                         pwd1 = rows[0].pwd;
