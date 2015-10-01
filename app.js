@@ -2,11 +2,9 @@
 
 var express = require('express');
 var session = require('express-session');
-var redis = require('redis');
+//var redis = require('redis');
 var mycookieParser = require('cookie-parser');
 var mybodyParser = require('body-parser');
-var redisStore = require('connect-redis')(session);
-var client = redis.createClient();//CREATE REDIS CLIENT
 
 //ROUTES
 var routes = require('./routes');
@@ -25,7 +23,17 @@ var path = require('path');
 
 var app = express();
 var count = 0;
-var redisURL = url.parse('redis://:@52.23.236.175:6379/0');
+var SessionStore = require('express-mysql-session');
+
+var options = {
+    host: 'localhost',
+    port: 3306,
+    user: 'root',
+    password: 'Pop123465.',
+    database: 'Project2'
+};
+
+var sessionStore = new SessionStore(options);
 
 // Set app's environments
 app.set('port', process.env.PORT || 7001);
@@ -37,7 +45,7 @@ app.use(mybodyParser.urlencoded({ extended: true }));
 app.use(mybodyParser.json());
 app.use(session({key: 'express.sid' // use unique ids for session IDs
 ,secret: 'xyz123abC',
-    store: new redisStore({ host: redisURL.hostname, port: 6379, db :redisURL.path.substring(1),client: client }),
+    store: sessionStore,
     resave: true, saveUninitialized: true, cookie:{expires:new Date(new Date().getMinutes()+240), maxAge:900000}
      }));
 
