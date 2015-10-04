@@ -25,7 +25,7 @@ exports.loginsuccess = function(req, res){
         // Connect to Database
         var mysql = require('mysql');
         var connection = mysql.createConnection({
-            host: 'localhost',
+            host: 'project3.crbxasmdgbrq.us-east-1.rds.amazonaws.com',
             user: 'root',
             password: 'Pop123465.',
             database: 'Project2'

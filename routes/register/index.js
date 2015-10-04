@@ -48,48 +48,48 @@ exports.register = function(req,res){
     //VALIDATION
     try{
 
-    if(email==''||emailvalidator.test(email)==true) {
+    if(typeof email=='undefined'||email==''||emailvalidator.test(email)==true) {
         error=true;
         console.log('email error');
         console.log(emailvalidator.test(email));
     }
 
-    if(fname==''||fname.length<2) {
+    if(typeof fname=='undefined'||fname==''||fname.length<2) {
         error=true;
         console.log('fname error');
 
     }
 
-    if(lname==''||lname.length<2) {
+    if(typeof lname=='undefined'||lname==''||lname.length<2) {
         error=true;
         console.log('lname error');
 
     }
 
-    if(address==''||address.length<4) {
+    if(typeof address=='undefined'||address==''||address.length<4) {
         error=true;
         console.log('address error');
 
     }
 
-    if(city==''||city.length<2) {
+    if(typeof city=='undefined'||city==''||city.length<2) {
         error=true;
         console.log('city error');
 
     }
 
-    if(zip==''||zipvalidator.test(zip)==true) {
+    if(typeof zip=='undefined'||zip==''||zipvalidator.test(zip)==true) {
         error=true;
         console.log('zip error');
 
     }
 
-    if(uname=='') {
+    if(typeof uname=='undefined'||uname=='') {
         error=true;
         console.log('uname error');
 
     }
-    if(pwd=='') {
+    if(typeof pwd=='undefined'||pwd=='') {
         error=true;
         console.log('pwd error');
 
@@ -109,7 +109,7 @@ exports.register = function(req,res){
     {
 
         var connection = mysql.createConnection({
-            host: 'localhost',
+            host: 'project3.crbxasmdgbrq.us-east-1.rds.amazonaws.com',
             user: 'root',
             password: 'Pop123465.',
             database: 'Project2'
@@ -150,7 +150,7 @@ exports.register = function(req,res){
                 //Connect to Database
 
                 var connection1 = mysql.createConnection({
-                    host: 'localhost',
+                    host: 'project3.crbxasmdgbrq.us-east-1.rds.amazonaws.com',
                     user: 'root',
                     password: 'Pop123465.',
                     database: 'Project2'

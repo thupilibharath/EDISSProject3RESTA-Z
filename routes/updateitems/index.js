@@ -15,7 +15,7 @@ exports.updateitems=function(req,res){
     console.log('id is '+id);
 
     var connection = mysql.createConnection({
-        host     : 'localhost',
+        host     : 'project3.crbxasmdgbrq.us-east-1.rds.amazonaws.com',
         user     : 'root',
         password : 'Pop123465.',
         database : 'Project2'

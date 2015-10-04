@@ -18,7 +18,7 @@ exports.updatedetails = function(req, res){
     //console.log(data);
 
     var connection1 = mysql.createConnection({
-        host     : 'localhost',
+        host     : 'project3.crbxasmdgbrq.us-east-1.rds.amazonaws.com',
         user     : 'root',
         password : 'Pop123465.',
         database : 'Project2'
@@ -39,7 +39,7 @@ exports.updatedetails = function(req, res){
 
             if(!sess.username){
                 console.log('Unauthorized user');
-                res.send(JSON.stringify({message:'Session not available'}));
+                res.send(JSON.stringify({message:'There was a problem with this action'}));
             }
 
             else {
@@ -59,7 +59,7 @@ exports.updatedetails = function(req, res){
 
                         //Update content based on existing details
                         var connection = mysql.createConnection({
-                            host     : 'localhost',
+                            host     : 'project3.crbxasmdgbrq.us-east-1.rds.amazonaws.com',
                             user     : 'root',
                             password : 'Pop123465.',
                             database : 'Project2'
@@ -71,7 +71,7 @@ exports.updatedetails = function(req, res){
                                 console.log("Database1 is connected ... \n\n");
                                 if(!sess.username){
                                     console.log('Unauthorized user');
-                                    res.send(JSON.stringify({message:'Session not avaiable'}))
+                                    res.send(JSON.stringify({message:'There was a problem with this action'}))
                                 }
 
                                 else {
@@ -107,6 +107,8 @@ exports.updatedetails = function(req, res){
                                             success=true;
                                             res.send(JSON.stringify({message:'Your information has been updated'}));
                                         }
+                                        else
+                                            res.send(JSON.stringify({message:'There was a problem with this action'}));
 
 
                                     });
@@ -129,6 +131,8 @@ exports.updatedetails = function(req, res){
                     }
                     else
                         console.log('Error while fetching existing records');
+                    res.send(JSON.stringify({message:'There was a problem with this action'}));
+
                 });
 
 
@@ -138,6 +142,8 @@ exports.updatedetails = function(req, res){
 
         } else {
             console.log("Error connecting to database ... \n\n");
+            res.send(JSON.stringify({message:'There was a problem with this action'}));
+
         }
     });
 

@@ -7,31 +7,29 @@ exports.list = function(req, res){
 
     var fname, lname;
 
-    console.log(req.query.texta);
-    console.log(req.query.textb);
+    console.log(req.query.fname);
+    console.log(req.query.lname);
 
 
-    if (typeof req.query.texta == 'undefined')
+    if (typeof req.query.fname == 'undefined')
       fname = '\'\%\'';
     else
-      fname = '\'\%' + req.query.texta + '\%\'';
+      fname = '\'\%' + req.query.fname + '\%\'';
 
-    if (typeof req.query.textb == 'undefined')
+    if (typeof req.query.lname == 'undefined')
       lname = '\'\%\'';
     else
-      lname = '\'\%' + req.query.textb + '\%\'';
+      lname = '\'\%' + req.query.lname + '\%\'';
 
     console.log('fname is ' + fname);
     console.log('lname is ' + lname);
     var mysql = require('mysql');
     var connection = mysql.createConnection({
-      host: 'localhost',
+      host: 'project3.crbxasmdgbrq.us-east-1.rds.amazonaws.com',
       user: 'root',
       password: 'Pop123465.',
       database: 'Project2'
     });
-
-
 
 
     connection.connect(function (err) {

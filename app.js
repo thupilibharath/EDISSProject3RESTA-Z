@@ -26,7 +26,7 @@ var count = 0;
 var SessionStore = require('express-mysql-session');
 
 var options = {
-    host: 'localhost',
+    host: 'project3.crbxasmdgbrq.us-east-1.rds.amazonaws.com',
     port: 3306,
     user: 'root',
     password: 'Pop123465.',
